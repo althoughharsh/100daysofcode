@@ -1,16 +1,20 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
-void mergesort(vector <int> arr[],int start, int end){
-    if(start>=end){
+void merge(vector<int> &arr, int start, int mid, int end);
+
+
+void mergesort(vector<int> &arr,int start, int end){
+    if(start<end){
         int mid = start + (end-start)/2;
         mergesort(arr,start, mid);
         mergesort(arr,mid+1,end);
-    }
-    merge(arr,start,mid,end);
+        merge(arr,start,mid,end);
+        }
 }
-void merge(vector <int> arr, int start, int mid, int end){
+void merge(vector <int> &arr, int start, int mid, int end){
     vector <int> temp;
-    int i = start
+    int i = start;
     int j = mid+1;
     while(i<=mid && j<=end){
         if(arr[i]<=arr[j]){
@@ -43,3 +47,5 @@ int main(){
     }
     return 0;
 }
+
+
